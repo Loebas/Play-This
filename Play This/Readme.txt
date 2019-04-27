@@ -1,1 +1,1 @@
-Hier de info
+Hier de info over deze app.
