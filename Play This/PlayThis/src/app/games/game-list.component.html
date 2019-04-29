@@ -1,0 +1,33 @@
+<div>
+    <div> {{title}} </div>
+    <button (click)='toggleImages()'> {{showImage ? "Verberg foto's" : "Toon foto's"}}</button>
+
+    <div>
+        <input type='text' [(ngModel)]='filterTerm' />
+    </div>
+    <div>
+        Gefilterd op {{filterTerm}}
+    </div>
+    <div class='table-responsive'>
+        <table class='table'>
+            <thead>
+                <tr>
+                    <th>Afbeelding</th>
+                    <th>Naam</th>
+                    <th>Min Spelers</th>
+                    <th>Max Spelers</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor='let game of filteredGames'>
+                    <td>
+                        <img *ngIf='showImage' [src]='game.imageUrl' width=60></td>
+                    <td>{{game.naam}} </td>
+                    <td>{{game.minspelers}}</td>
+                    <td>{{game.maxspelers}}</td>
+
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
