@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { IGame } from './game';
+import { GameService } from './game.service';
 
 @Component({
     selector: 'pt-gamelist',
@@ -11,8 +12,8 @@ export class GameListComponent implements OnInit {
     /**
      *
      */
-    constructor() {
-        this.filteredGames = this.games;
+    constructor(private gameService: GameService) {
+
 
 
     }
@@ -21,7 +22,9 @@ export class GameListComponent implements OnInit {
             g.naam.toLocaleLowerCase().indexOf(filterTerm) !== -1);
     }
     ngOnInit(): void {
-        throw new Error("Method not implemented.");
+        this.games = this.gameService.getGames();
+        this.filteredGames = this.games;
+
     }
     showImage: boolean = true;
     title: string = 'Spellenlijst van Wouter';
@@ -38,34 +41,11 @@ export class GameListComponent implements OnInit {
     }
 
     filteredGames: IGame[];
-    games: IGame[] = [
-        {
-            "naam": 'Schaken',
-            "minspelers": 2,
-            "maxspelers": 2,
-            "imageUrl": "https://www.spelregels.eu/wp-content/uploads/2018/01/spelregels-schaken.jpg"
-        },
-        {
-
-            "naam": 'Runebound',
-            "minspelers": 2,
-            "maxspelers": 4,
-            "imageUrl": "https://s.s-bol.com/imgbase0/imagebase3/large/FC/3/9/1/9/9200000049959193.jpg"
-        },
-        {
-            "naam": 'Le Havre',
-            "minspelers": 1,
-            "maxspelers": 5,
-            "imageUrl": "https://www.999games.nl/media/catalog/product/cache/c687aa7517cf01e65c009f6943c2b1e9/L/e/Le_Havre.png"
-        },
-        {
-            "naam": 'Grand Austria Hotel',
-            "minspelers": 2,
-            "maxspelers": 4,
-            "imageUrl": "https://cf.geekdo-images.com/itemrep/img/M4kKEoLMFiYnUEHQ5TDFQjjq1nQ=/fit-in/246x300/pic2728138.jpg"
-        }
-    ]
+    games: IGame[];
     toggleImages(): void {
         this.showImage = !this.showImage
+    }
+    onVentjesGeklikt(message: string): void {
+        this.title = message;
     }
 }

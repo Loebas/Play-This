@@ -1,10 +1,12 @@
 import { Pipe, PipeTransform } from '@angular/core';
 @Pipe({
-    name: 'convertToSpaces'
+    name: 'KapselStringIn'
 })
 export class KapselStringIn implements PipeTransform {
 
-    transform(): string {
-        return "a";
+    transform(b: string): string {
+
+        return "***" + b + "***";
+
     }
 }
