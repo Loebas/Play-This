@@ -3,7 +3,7 @@ import { IGame } from './game';
 import { GameService } from './game.service';
 
 @Component({
-    selector: 'pt-gamelist',
+    // selector: 'pt-gamelist',
     templateUrl: './game-list.component.html',
     styleUrls: ['./game-list.component.css']
 })

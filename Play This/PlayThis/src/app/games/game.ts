@@ -3,4 +3,6 @@ export interface IGame {
     minspelers: number;
     maxspelers: number;
     imageUrl: string;
+    gameId: number;
+
 }

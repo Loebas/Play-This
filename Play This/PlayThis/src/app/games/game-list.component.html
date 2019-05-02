@@ -22,7 +22,9 @@
                 <tr *ngFor='let game of filteredGames'>
                     <td>
                         <img *ngIf='showImage' [src]='game.imageUrl' width=60></td>
-                    <td>{{game.naam | KapselStringIn }} </td>
+                    <td>
+                        <a [routerLink]="['/games', game.gameId]">
+                            {{game.naam | KapselStringIn }}</a> </td>
                     <td>{{game.minspelers }}</td>
                     <td>
                         <pt-ventje [ventjes]='game.maxspelers' (ventjesGeklikt)='onVentjesGeklikt($event)'></pt-ventje>
