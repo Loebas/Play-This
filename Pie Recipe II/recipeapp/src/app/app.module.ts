@@ -7,13 +7,17 @@ import { IngredientComponent } from './ingredient/ingredient.component';
 
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatListModule, MatCardModule, MatIconModule } from '@angular/material';
-import { FlexLayoutModule } from '@angular/flex-layout'
+import { FlexLayoutModule } from '@angular/flex-layout';
+import { AddRecipeComponent } from './add-recipe/add-recipe.component';
+import { RecipeFilterPipe } from './recipe-filter.pipe'
 
 @NgModule({
   declarations: [
     AppComponent,
     RecipeComponent,
-    IngredientComponent
+    IngredientComponent,
+    AddRecipeComponent,
+    RecipeFilterPipe
   ],
   imports: [
     BrowserModule,

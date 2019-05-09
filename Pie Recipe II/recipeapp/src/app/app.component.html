@@ -1,10 +1,17 @@
-<!--The content below is only a placeholder and can be replaced.-->
-<div style="text-align:center">
-  <h1>
-    Welcome to {{ title }}!
-  </h1>
+<div fxLayout="row wrap" fxLayout.xs="column" fxLayoutGap="0.5%" fxLayoutAlign="start">
+  <app-add-recipe (newRecipe)="addNewRecipe($event)"></app-add-recipe>
+  <mat-card>
 
-</div>
-<div>
-  <app-recipe></app-recipe>
+    <input matInput placeholder="filter" type="text" #filter />
+
+    <button (click)="applyFilter(filter.value)" mat-raised-button>
+      Filter
+    </button>
+
+  </mat-card>
+
+  <div class="recipe" *ngFor="let localRecipe of (recipes | recipeFilter: filterRecipeName)" fxFlex="0 0 calc(25%-0.5%)"
+    fxFlex.xs="100%">
+    <app-recipe [recipe]="localRecipe"></app-recipe>
+  </div>
 </div>

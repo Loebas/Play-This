@@ -1,0 +1,18 @@
+<h1>
+
+  List of games
+</h1>
+<h2>
+  Selected game: {{selectedGame.naam}}
+</h2>
+<ul>
+  <li *ngFor="let game of games" (mouseenter)="selectGame(game)">
+    {{game.naam}} - {{game.minSpelers}} - {{game.maxSpelers}}
+    - {{game.tags}}
+
+  </li>
+
+</ul>
+<app-game-detail [game]="selectedGame">
+
+</app-game-detail>
