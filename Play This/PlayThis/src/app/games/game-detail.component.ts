@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { IGame } from './game';
+import { Game } from './game';
 import { ActivatedRoute, Router } from '@angular/router';
 
 
@@ -9,7 +9,7 @@ import { ActivatedRoute, Router } from '@angular/router';
   styleUrls: ['./game-detail.component.css']
 })
 export class GameDetailComponent implements OnInit {
-  game: IGame;
+  game: Game;
   pageTitle: 'Game Detail';
   constructor(private route: ActivatedRoute, private router: Router) { }
   onBack(): void {

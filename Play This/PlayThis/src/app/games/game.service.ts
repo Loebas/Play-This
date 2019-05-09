@@ -1,49 +1,41 @@
 import { Injectable } from '@angular/core';
-import { IGame } from './game';
-import { HttpClient } from '@angular/common/http';
-import { Observable } from 'rxjs';
+import { Game } from './game';
+
+import { Observable, of } from 'rxjs';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 
 @Injectable({
     providedIn: 'root'
 })
 export class GameService {
+    // URL naar api 
+    private gamesUrl = 'api/games';
 
-    private gameUrl;
     constructor(private http: HttpClient) {
 
 
     }
-    getGames(): IGame[] {
-        return [
-            {
-                "gameId": 1,
-                "naam": 'Schaken',
-                "minspelers": 2,
-                "maxspelers": 2,
-                "imageUrl": "https://www.spelregels.eu/wp-content/uploads/2018/01/spelregels-schaken.jpg"
-            },
-            {
-                "gameId": 2,
-                "naam": 'Runebound',
-                "minspelers": 2,
-                "maxspelers": 4,
-                "imageUrl": "https://s.s-bol.com/imgbase0/imagebase3/large/FC/3/9/1/9/9200000049959193.jpg"
-            },
-            {
-                "gameId": 3,
-                "naam": 'Le Havre',
-                "minspelers": 1,
-                "maxspelers": 5,
-                "imageUrl": "https://www.999games.nl/media/catalog/product/cache/c687aa7517cf01e65c009f6943c2b1e9/L/e/Le_Havre.png"
-            },
-            {
-                "gameId": 4,
-                "naam": 'Grand Austria Hotel',
-                "minspelers": 2,
-                "maxspelers": 4,
-                "imageUrl": "https://cf.geekdo-images.com/itemrep/img/M4kKEoLMFiYnUEHQ5TDFQjjq1nQ=/fit-in/246x300/pic2728138.jpg"
-            }
-        ];
+
+    // getGames(): Observable<Game[]> {
+    //     return of([
+    //         {
+    //             "gameId": 1,
+    //             "naam": 'Schaken',
+    //             "minspelers": 2,
+    //             "maxspelers": 2,
+    //             "imageUrl": "https://www.spelregels.eu/wp-content/uploads/2018/01/spelregels-schaken.jpg"
+    //         },
+    //         {
+    //             "gameId": 2,
+    //             "naam": 'Runebound',
+    //             "minspelers": 2,
+    //             "maxspelers": 4,
+    //             "imageUrl": "https://s.s-bol.com/imgbase0/imagebase3/large/FC/3/9/1/9/9200000049959193.jpg"
+    //         }]);
+    // }
+    getGames(): Observable<Game[]> {
+        alert(this.http.get<Game[]>(this.gamesUrl))
+        return this.http.get<Game[]>(this.gamesUrl);
     }
 
 }

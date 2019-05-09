@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { IGame } from './game';
+import { Game } from './game';
 import { GameService } from './game.service';
 
 @Component({
-    // selector: 'pt-gamelist',
+    //  selector: 'pt-gamelist',
     templateUrl: './game-list.component.html',
     styleUrls: ['./game-list.component.css']
 })
@@ -17,13 +17,15 @@ export class GameListComponent implements OnInit {
 
 
     }
-    Filter(filterTerm: string): IGame[] {
-        return this.games.filter((g: IGame) =>
+    Filter(filterTerm: string): Game[] {
+        return this.games.filter((g: Game) =>
             g.naam.toLocaleLowerCase().indexOf(filterTerm) !== -1);
     }
     ngOnInit(): void {
-        this.games = this.gameService.getGames();
+        this.gameService.getGames().subscribe(g => this.games = g);
+
         this.filteredGames = this.games;
+
 
     }
     showImage: boolean = true;
@@ -40,8 +42,8 @@ export class GameListComponent implements OnInit {
         this.filteredGames = this.filterTerm ? this.Filter(this.filterTerm) : this.games;
     }
 
-    filteredGames: IGame[];
-    games: IGame[];
+    filteredGames: Game[];
+    games: Game[];
     toggleImages(): void {
         this.showImage = !this.showImage
     }

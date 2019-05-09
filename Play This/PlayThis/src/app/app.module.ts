@@ -13,6 +13,8 @@ import { GameDetailComponent } from './games/game-detail.component';
 import { RouterModule } from '@angular/router';
 import { WelcomeComponent } from './welcome/welcome.component';
 import { GameDetailGuard } from './games/game-detail.guard';
+import { HttpClientInMemoryWebApiModule } from 'angular-in-memory-web-api';
+import { InMemoryDataService } from './in-memory-data.service';
 
 
 @NgModule({
@@ -22,6 +24,10 @@ import { GameDetailGuard } from './games/game-detail.guard';
   imports: [
     BrowserModule,
     AppRoutingModule, FormsModule, HttpClientModule
+    ,
+    //fake de communicatie met server
+    HttpClientInMemoryWebApiModule.forRoot(
+      InMemoryDataService, { dataEncapsulation: false })
     , RouterModule.forRoot([
       { path: 'games', component: GameListComponent },
       {
@@ -34,6 +40,7 @@ import { GameDetailGuard } from './games/game-detail.guard';
       { path: '**', redirectTo: 'games', pathMatch: 'full' }
 
     ])
+
   ],
   providers: [],
   bootstrap: [AppComponent]
