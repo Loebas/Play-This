@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
 import { GAMES } from './mock-games';
+import { GameDataService } from './game-data.service';
+import { Game } from './game/game';
 
 
 @Component({
@@ -10,5 +12,6 @@ import { GAMES } from './mock-games';
 export class AppComponent {
   title = 'playapp';
 
-  games = GAMES;
+
+
 }

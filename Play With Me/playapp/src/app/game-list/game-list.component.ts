@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Game } from '../game/game';
 import { GAMES } from '../mock-games';
+import { GameDataService } from '../game-data.service';
 
 
 @Component({
@@ -10,14 +11,29 @@ import { GAMES } from '../mock-games';
 })
 export class GameListComponent implements OnInit {
 
-  games = GAMES;
+
   selectedGame: Game;
+  gameFilterTerm: string;
 
   selectGame(g: Game) {
     this.selectedGame = g;
   }
 
-  constructor() { }
+  constructor(private _gameDataService: GameDataService) {
+
+  }
+
+  get games(): Game[] {
+    return this._gameDataService.games;
+  }
+
+  addGame(g): void {
+    this._gameDataService.addGame(g);
+  }
+
+  pasFilterToe(term: string) {
+    this.gameFilterTerm = term;
+  }
 
   ngOnInit() {
 
