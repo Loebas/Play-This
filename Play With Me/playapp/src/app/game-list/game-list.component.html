@@ -2,15 +2,13 @@
   <input type="text" #filter />
   <button (click)="pasFilterToe(filter.value)">Filter</button>
 
-
-
 </div>
 
 <h1>
 
   List of games
 </h1>
-<h2>
+<h2 *ngIf="selectedGame">
   Selected game: {{selectedGame.naam}}
 </h2>
 <ul>
@@ -21,6 +19,7 @@
   </li>
 
 </ul>
-<app-game-detail [game]="selectedGame">
+
+<app-game-detail *ngIf="selectedGame" [game]="selectedGame">
 
 </app-game-detail>
